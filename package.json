@@ -1,0 +1,12 @@
+{
+  "name": "tupizm",
+  "private": true,
+  "scripts": {
+    "flask": ".venv\\Scripts\\python.exe -m flask --app app run",
+    "vite":  "cd frontend && npm run dev",
+    "dev":   "concurrently -k -n flask,vite -c blue,magenta \"npm run flask\" \"npm run vite\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

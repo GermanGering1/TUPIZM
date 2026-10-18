@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Редактирование профиля</h2>
+<form method="post">
+  <p>Био (до 500 символов):</p>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <textarea name="bio" rows="5" cols="50" maxlength="500">{{ user.bio }}</textarea>
+  <p><button type="submit">Сохранить</button></p>
+</form>
+<a href="{{ url_for('profile', nickname=user.nickname) }}">Назад</a>
+{% endblock %}

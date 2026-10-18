@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Лента</h2>
+
+{% if current_user.is_authenticated %}
+<form method="post" action="{{ url_for('create_post') }}">
+  <textarea name="content" rows="3" cols="50" maxlength="2000"
+            placeholder="Что нового?"></textarea>
+  <p><button type="submit">Опубликовать</button></p>
+</form>
+{% endif %}
+
+{% for p in posts %}
+  <div>
+    <a href="{{ url_for('profile', nickname=p.author.nickname) }}">
+      {{ p.author.nickname }}
+    </a>
+    <small>{{ p.created_at.strftime("%Y-%m-%d %H:%M") }}</small>
+    <p>{{ p.content }}</p>
+  </div>
+{% else %}
+  <p>Постов пока нет.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ user.nickname }}</h2>
+<p>{{ user.bio or "Без описания" }}</p>
+{% if current_user.is_authenticated and current_user.id == user.id %}
+  <a href="{{ url_for('edit_profile') }}">Редактировать профиль</a>
+{% endif %}
+<hr>
+<h3>Посты</h3>
+{% for p in posts %}
+  <div>
+    <small>{{ p.created_at.strftime("%Y-%m-%d %H:%M") }}</small>
+    <p>{{ p.content }}</p>
+  </div>
+{% else %}
+  <p>Постов пока нет.</p>
+{% endfor %}
+{% endblock %}
