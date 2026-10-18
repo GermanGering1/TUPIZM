@@ -1,4 +1,3 @@
-// App.jsx
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Feed from './Feed';
